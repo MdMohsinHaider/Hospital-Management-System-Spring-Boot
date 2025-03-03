@@ -52,5 +52,9 @@ public class PatientController {
 	public Optional<Patient> getPatientByEmailController(@PathVariable String email){
 		return service.getPatientByEmail(email);
 	}
-
+	
+	@PostMapping(value = "/auth/patientId/{patientId}/password/{password}")
+	public boolean patientAuthController(@PathVariable int patientId, @PathVariable String password) {
+		return service.patientAuth(patientId, password);
+	}
 }

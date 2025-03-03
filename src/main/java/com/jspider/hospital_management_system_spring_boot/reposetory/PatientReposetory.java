@@ -27,4 +27,13 @@ public interface PatientReposetory extends JpaRepository<Patient, Integer> {
      * @return An Optional containing the patient if found, otherwise empty.
      */
     Optional<Patient> findByEmail(String email);
+    
+    /**
+     * Finds a patient by their patient ID and password.
+     *
+     * @param patientId The unique patient ID.
+     * @param password The password of the patient.
+     * @return An Optional containing the patient if found, otherwise empty.
+     */
+    Optional<Patient> findByPatientIdAndPassword(int patientId, String password);
 }

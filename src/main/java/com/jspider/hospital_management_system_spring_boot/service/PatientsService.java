@@ -56,4 +56,6 @@ public interface PatientsService {
      * @return An Optional containing the patient if found, otherwise empty.
      */
     Optional<Patient> getPatientByEmail(String email);
+    
+    boolean patientAuth(int patientId, String password);
 }

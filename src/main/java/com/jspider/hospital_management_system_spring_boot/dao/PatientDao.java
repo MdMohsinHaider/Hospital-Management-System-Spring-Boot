@@ -16,34 +16,38 @@ public class PatientDao implements PatientsDao {
 	private PatientReposetory reposetory;
 
 	@Override
-	public Patient save(Patient patient) {
+	public Patient saveDao(Patient patient) {
 		return reposetory.save(patient);
 	}
 
 	@Override
-	public Optional<Patient> findById(int patientId) {
+	public Optional<Patient> findByIdDao(int patientId) {
 		return reposetory.findById(patientId);
 	}
 
 	@Override
-	public List<Patient> findAll() {
+	public List<Patient> findAllDao() {
 		return reposetory.findAll();
 	}
 
 	@Override
-	public void deleteById(int patientId) {
+	public void deleteByIdDao(int patientId) {
 		reposetory.deleteById(patientId);
 	}
 
 	@Override
-	public Optional<Patient> findByContactNumber(Long contactNumber) {
+	public Optional<Patient> findByContactNumberDao(Long contactNumber) {
 		return reposetory.findByContactNumber(contactNumber);
 	}
 
 	@Override
-	public Optional<Patient> findByEmail(String email) {
+	public Optional<Patient> findByEmailDao(String email) {
 		return reposetory.findByEmail(email);
 	}
-	
+
+	@Override
+	public Optional<Patient> authPatientDao(int patientId, String password) {
+		return reposetory.findByPatientIdAndPassword(patientId, password);
+	}
 	
 }

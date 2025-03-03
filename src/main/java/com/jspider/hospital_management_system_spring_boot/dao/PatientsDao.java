@@ -12,7 +12,7 @@ public interface PatientsDao {
      * @param patient The patient entity to be saved.
      * @return The saved patient entity.
      */
-    Patient save(Patient patient);
+    Patient saveDao(Patient patient);
 
     /**
      * Retrieves a patient by their unique patient ID.
@@ -20,21 +20,21 @@ public interface PatientsDao {
      * @param patientId The ID of the patient to retrieve.
      * @return An Optional containing the patient if found, otherwise empty.
      */
-    Optional<Patient> findById(int patientId);
+    Optional<Patient> findByIdDao(int patientId);
 
     /**
      * Retrieves all patients from the database.
      *
      * @return A list of all patients.
      */
-    List<Patient> findAll();
+    List<Patient> findAllDao();
 
     /**
      * Deletes a patient by their unique patient ID.
      *
      * @param patientId The ID of the patient to delete.
      */
-    void deleteById(int patientId);
+    void deleteByIdDao(int patientId);
 
     /**
      * Finds a patient by their contact number.
@@ -42,7 +42,7 @@ public interface PatientsDao {
      * @param contactNumber The contact number of the patient.
      * @return An Optional containing the patient if found, otherwise empty.
      */
-    Optional<Patient> findByContactNumber(Long contactNumber);
+    Optional<Patient> findByContactNumberDao(Long contactNumber);
 
     /**
      * Finds a patient by their email address.
@@ -50,6 +50,14 @@ public interface PatientsDao {
      * @param email The email address of the patient.
      * @return An Optional containing the patient if found, otherwise empty.
      */
-    Optional<Patient> findByEmail(String email);
+    Optional<Patient> findByEmailDao(String email);
     
+    
+    /**
+     * Finds a patient by their email address.
+     *
+     * @param patientId and password of the patient.
+     * @return An Optional containing the patient if found, otherwise empty.
+     */
+    Optional<Patient> authPatientDao(int patientId, String password);
 }

@@ -17,22 +17,23 @@ public class PatientService implements PatientsService{
 
 	@Override
 	public Patient savePatient(Patient patient) {
-		return dao.save(patient);
+		return dao.saveDao(patient);
 	}
 
 	@Override
 	public Optional<Patient> getPatientById(int patientId) {
-		return dao.findById(patientId);
+		return dao.findByIdDao(patientId);
 	}
 
 	@Override
 	public List<Patient> getAllPatients() {
-		return dao.findAll();
+		return dao.findAllDao();
 	}
 
 	@Override
 	public boolean deletePatientById(int patientId) {
 		 if (patientId < 0) return false;
+		 dao.deleteByIdDao(patientId);
 		 return true;
 	}
 
@@ -41,12 +42,18 @@ public class PatientService implements PatientsService{
 		if (contactNumber == null || !String.valueOf(contactNumber).matches("\\d{10}")) {
 			return Optional.empty();
 		}
-		return dao.findByContactNumber(contactNumber);
+		return dao.findByContactNumberDao(contactNumber);
 	}
 
 	@Override
 	public Optional<Patient> getPatientByEmail(String email) {
-		return dao.findByEmail(email);
+		return dao.findByEmailDao(email);
 	}
 
+	@Override
+	public boolean patientAuth(int patientId, String password) {
+		if (patientId <= 0 || password == null || password.isBlank()) return false;
+		return dao.authPatientDao(patientId, password).isPresent();
+	}
+	
 }
