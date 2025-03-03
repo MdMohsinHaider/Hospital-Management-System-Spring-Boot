@@ -206,15 +206,6 @@ http://localhost:8090/api/patient/email/{email}
 http://localhost:8090/api/patient/auth/patientId/1/password/securePassword123
 ```
 
-## License
+## Jspider
 
-This project is licensed under the **MIT License**.
-
-## Contact
-
-For any queries, contact:
-
-- **Developer:** Md Mohsin Haider
-- **Email:** [mohsin@gmail.com](mdmohsinhaider6@com.com)
-- **LinkedIn:** [mdmohsinhaider](https://www.linkedin.com/in/md-mohsin-haider/)
 
