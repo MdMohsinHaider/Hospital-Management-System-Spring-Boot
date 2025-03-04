@@ -133,67 +133,22 @@ The project is built using **Maven**. Below is the `pom.xml` configuration:
 
 ### **Patient APIs**
 
-#### **POST - Save Patient**
-**Endpoint:**
-```
-http://localhost:8090/api/patient
-```
-
-**Request Body (JSON):**
-```json
-{
-    "contactNumber": 9876543210,
-    "password": "securePassword123",
-    "email": "patient@example.com",
-    "firstName": "John",
-    "lastName": "Doe",
-    "dateOfBirth": "1990-05-15",
-    "gender": 1,
-    "address": "123 Main Street, City, Country",
-    "emergencyContact": 9876543211,
-    "bloodType": "O+"
-}
-```
-
-#### **GET - Retrieve All Patients**
-**Endpoint:**
-```
-http://localhost:8090/api/patient
-```
-
-#### **GET - Retrieve Patient by ID**
-**Endpoint:**
-```
-http://localhost:8090/api/patient/{patientId}
-```
-
-#### **GET - Retrieve Patient by Contact Number**
-**Endpoint:**
-```
-http://localhost:8090/api/patient/contact/{contactNumber}
-```
-
-#### **GET - Retrieve Patient by Email**
-**Endpoint:**
-```
-http://localhost:8090/api/patient/email/{email}
-```
-
-#### **POST - Authenticate Patient**
-**Endpoint:**
-```
-http://localhost:8090/api/patient/auth/patientId/1/password/securePassword123
-```
+| Method | Endpoint | Description |
+|--------|----------------------------------------|--------------------------------------------|
+| POST   | `/api/patient`                        | Save Patient |
+| GET    | `/api/patient`                        | Retrieve All Patients |
+| GET    | `/api/patient/{patientId}`            | Retrieve Patient by ID |
+| GET    | `/api/patient/contact/{contactNumber}`| Retrieve Patient by Contact Number |
+| GET    | `/api/patient/email/{email}`          | Retrieve Patient by Email |
+| POST   | `/api/patient/auth/patientId/1/password/securePassword123` | Authenticate Patient |
 
 ### **Admin APIs**
 
-#### **POST - Authenticate Admin**
-**Endpoint:**
-```
-http://localhost:8090/api/authenticateAdmin/identifier/admin@gmail.com/password/admin123
-```
+| Method | Endpoint | Description |
+|--------|-----------------------------------------------------|----------------------|
+| POST   | `/api/authenticateAdmin/identifier/admin@gmail.com/password/admin123` | Authenticate Admin |
 
 ---
 
-**Developed by:**
+**Developed by:** 
 
