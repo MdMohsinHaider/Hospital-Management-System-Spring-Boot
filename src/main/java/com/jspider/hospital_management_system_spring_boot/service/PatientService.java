@@ -10,50 +10,50 @@ import com.jspider.hospital_management_system_spring_boot.dao.PatientsDao;
 import com.jspider.hospital_management_system_spring_boot.entity.Patient;
 
 @Service
-public class PatientService implements PatientsService{
-	
+public class PatientService implements PatientsService {
+
 	@Autowired
 	private PatientsDao dao;
-
+	
 	@Override
 	public Patient savePatient(Patient patient) {
-		return dao.saveDao(patient);
-	}
-
-	@Override
-	public Optional<Patient> getPatientById(int patientId) {
-		return dao.findByIdDao(patientId);
-	}
-
-	@Override
-	public List<Patient> getAllPatients() {
-		return dao.findAllDao();
-	}
-
-	@Override
-	public boolean deletePatientById(int patientId) {
-		 if (patientId < 0) return false;
-		 dao.deleteByIdDao(patientId);
-		 return true;
-	}
-
-	@Override
-	public Optional<Patient> getPatientByContactNumber(Long contactNumber) {
-		if (contactNumber == null || !String.valueOf(contactNumber).matches("\\d{10}")) {
-			return Optional.empty();
+		if (dao.existsByEmailDao(patient.getEmail())) {
+			return null;
 		}
+		return dao.savePatientDao(patient);
+	}
+
+	@Override
+	public List<Patient> getAllPatient() {
+		return dao.getAllPatientDao();
+	}
+
+	@Override
+	public Optional<Patient> getPatientById(int id) {
+		return dao.getPatientByIdDao(id);
+	}
+
+	@Override
+	public Patient findByContactNumber(String contactNumber) {
 		return dao.findByContactNumberDao(contactNumber);
 	}
 
 	@Override
-	public Optional<Patient> getPatientByEmail(String email) {
-		return dao.findByEmailDao(email);
+	public Patient findByEmail(String email) {
+		if (dao.existsByEmailDao(email)) {
+			return dao.findByEmailDao(email);	
+		}
+		return null;
 	}
 
 	@Override
-	public boolean patientAuth(int patientId, String password) {
-		if (patientId <= 0 || password == null || password.isBlank()) return false;
-		return dao.authPatientDao(patientId, password).isPresent();
+	public boolean existsByEmail(String email) {
+		return dao.existsByEmailDao(email);
 	}
-	
+
+	@Override
+	public boolean authenticatePatientCredentials(int patientId, String password) {
+		return dao.isValidPatient(patientId, password);
+	}
+
 }

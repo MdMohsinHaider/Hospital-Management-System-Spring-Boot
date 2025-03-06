@@ -1,8 +1,7 @@
-package com.jspider.hospital_management_system_spring_boot.entity;
+package com.jspider.hospital_management_system_spring_boot.dao;
 
 import org.springframework.stereotype.Repository;
 
-import com.jspider.hospital_management_system_spring_boot.dao.AdminDao;
 import com.jspider.hospital_management_system_spring_boot.reposetory.AdminRepository;
 
 @Repository

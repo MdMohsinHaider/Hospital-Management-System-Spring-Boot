@@ -7,47 +7,47 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.jspider.hospital_management_system_spring_boot.entity.Patient;
-import com.jspider.hospital_management_system_spring_boot.reposetory.PatientReposetory;
+import com.jspider.hospital_management_system_spring_boot.reposetory.PatientRepository;
 
 @Repository
 public class PatientDao implements PatientsDao {
-
+	
 	@Autowired
-	private PatientReposetory reposetory;
+	private PatientRepository repository;
 
 	@Override
-	public Patient saveDao(Patient patient) {
-		return reposetory.save(patient);
+	public Patient savePatientDao(Patient patient) {
+		return repository.save(patient);
 	}
 
 	@Override
-	public Optional<Patient> findByIdDao(int patientId) {
-		return reposetory.findById(patientId);
+	public List<Patient> getAllPatientDao() {
+		return repository.findAll();
 	}
 
 	@Override
-	public List<Patient> findAllDao() {
-		return reposetory.findAll();
+	public Optional<Patient> getPatientByIdDao(int id) {
+		return repository.findById(id);
 	}
 
 	@Override
-	public void deleteByIdDao(int patientId) {
-		reposetory.deleteById(patientId);
+	public Patient findByContactNumberDao(String contactNumber) {
+		return repository.findByContactNumber(contactNumber);
 	}
 
 	@Override
-	public Optional<Patient> findByContactNumberDao(Long contactNumber) {
-		return reposetory.findByContactNumber(contactNumber);
+	public Patient findByEmailDao(String email) {
+		return repository.findByEmail(email);
 	}
 
 	@Override
-	public Optional<Patient> findByEmailDao(String email) {
-		return reposetory.findByEmail(email);
+	public boolean existsByEmailDao(String email) {
+		return repository.existsByEmail(email);
 	}
 
 	@Override
-	public Optional<Patient> authPatientDao(int patientId, String password) {
-		return reposetory.findByPatientIdAndPassword(patientId, password);
+	public boolean isValidPatient(int patientId, String password) {
+		return repository.existsByPatientIdAndPassword(patientId, password);
 	}
 	
 }
