@@ -1,0 +1,58 @@
+package com.jspider.hospital_management_system_spring_boot.dao;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.jspider.hospital_management_system_spring_boot.entity.Doctor;
+import com.jspider.hospital_management_system_spring_boot.reposetory.DoctorReposetory;
+
+@Repository
+public class DoctorDao implements DoctorsDao {
+
+	@Autowired
+	private DoctorReposetory reposetory;
+	
+	@Override
+	public Doctor saveDoctorDao(Doctor doctor) {
+		return reposetory.save(doctor);
+	}
+
+	@Override
+	public List<Doctor> getAllDoctorDao() {
+		return reposetory.findAll();
+	}
+
+	@Override
+	public Optional<Doctor> getDoctorByIdDao(long id) {
+		return reposetory.findById(id);
+	}
+
+	@Override
+	public Doctor findByEmailDao(String email) {
+		return reposetory.findByEmail(email);
+	}
+
+	@Override
+	public Doctor findByContactNumberDao(String contactNumber) {
+		return reposetory.findByContactNumber(contactNumber);
+	}
+
+	@Override
+	public List<Doctor> findBySpecializationDao(String specialization) {
+		return reposetory.findBySpecialization(specialization);
+	}
+
+	@Override
+	public boolean existsByEmailDao(String email) {
+		return reposetory.existsByEmail(email);
+	}
+
+	@Override
+	public boolean existsByContactNumberDao(String contactNumber) {
+		return reposetory.existsByContactNumber(contactNumber);
+	}
+
+}
