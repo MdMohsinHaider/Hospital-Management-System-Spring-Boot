@@ -1,0 +1,55 @@
+package com.jspider.hospital_management_system_spring_boot.dao;
+
+import java.time.LocalDate;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.jspider.hospital_management_system_spring_boot.entity.Appointment;
+import com.jspider.hospital_management_system_spring_boot.entity.Doctor;
+import com.jspider.hospital_management_system_spring_boot.entity.Patient;
+import com.jspider.hospital_management_system_spring_boot.reposetory.AppointmentRepository;
+
+@Repository
+public class AppointmentDao implements AppointmentsDao {
+
+	@Autowired
+	private AppointmentRepository repository;
+	
+	@Override
+	public Appointment saveAppointmentDao(Appointment appointment) {
+		return repository.save(appointment);
+	}
+
+	@Override
+	public List<Appointment> getAllAppointmentsDao() {
+		return repository.findAll();
+	}
+
+	@Override
+	public List<Appointment> getAppointmentsByDoctorDao(Doctor doctor) {
+		return repository.findByDoctor(doctor);
+	}
+
+	@Override
+	public List<Appointment> getAppointmentsByPatientDao(Patient patient) {
+		return repository.findByPatient(patient);
+	}
+
+	@Override
+	public List<Appointment> getAppointmentsByDateDao(LocalDate date) {
+		return repository.findByAppointmentDate(date);
+	}
+
+	@Override
+	public boolean isDoctorBookedDao(Doctor doctor, LocalDate date) {
+		return repository.existsByDoctorAndAppointmentDate(doctor, date);
+	}
+
+	@Override
+	public boolean isPatientBookedDao(Patient patient, LocalDate date) {
+		return repository.existsByPatientAndAppointmentDate(patient, date);
+	}
+
+}

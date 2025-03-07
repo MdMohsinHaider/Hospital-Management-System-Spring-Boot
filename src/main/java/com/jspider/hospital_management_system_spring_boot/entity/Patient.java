@@ -3,6 +3,8 @@ package com.jspider.hospital_management_system_spring_boot.entity;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -47,7 +49,8 @@ public class Patient {
     @Column(length = 5)
     private String bloodType;
 
-    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "patient", cascade = CascadeType.ALL,fetch = FetchType.LAZY, orphanRemoval = true)
+    @JsonIgnore
     private List<Appointment> appointments;
 
     public enum Gender {

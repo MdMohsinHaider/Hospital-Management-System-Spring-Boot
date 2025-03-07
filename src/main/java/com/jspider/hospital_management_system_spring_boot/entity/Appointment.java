@@ -1,5 +1,6 @@
 package com.jspider.hospital_management_system_spring_boot.entity;
 
+
 import java.time.LocalDate;
 
 import jakarta.persistence.Entity;
@@ -29,5 +30,6 @@ public class Appointment {
     @ManyToOne
     @JoinColumn(name = "patient_id", nullable = false)
     private Patient patient;
-	
+    
+    
 }

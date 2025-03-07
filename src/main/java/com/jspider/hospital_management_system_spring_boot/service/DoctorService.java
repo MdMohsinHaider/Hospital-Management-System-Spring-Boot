@@ -17,6 +17,9 @@ public class DoctorService implements DoctorsService {
 
 	@Override
 	public Doctor saveDoctor(Doctor doctor) {
+		if (dao.existsByEmailDao(doctor.getEmail()) || dao.existsByContactNumberDao(doctor.getContactNumber())) {
+			return null;
+		}
 		return dao.saveDoctorDao(doctor);
 	}
 
@@ -32,12 +35,20 @@ public class DoctorService implements DoctorsService {
 
 	@Override
 	public Doctor findByEmail(String email) {
-		return dao.findByContactNumberDao(email);
+		if (dao.existsByEmailDao(email)) {
+			return dao.findByEmailDao(email);
+		}
+		return null;
+		
 	}
 
 	@Override
 	public Doctor findByContactNumber(String contactNumber) {
-		return dao.findByContactNumberDao(contactNumber);
+		if (dao.existsByContactNumberDao(contactNumber)) {
+			return dao.findByContactNumberDao(contactNumber);
+		}
+		return null;
+		
 	}
 
 	@Override
