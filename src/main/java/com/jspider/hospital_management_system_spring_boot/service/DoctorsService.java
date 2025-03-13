@@ -15,5 +15,6 @@ public interface DoctorsService {
 	List<Doctor> findBySpecialization(String specialization);
 	boolean existsByEmail(String email);
 	boolean existsByContactNumber(String contactNumber);
+	boolean authenticateDoctor(Long doctorId, String password);
 
 }

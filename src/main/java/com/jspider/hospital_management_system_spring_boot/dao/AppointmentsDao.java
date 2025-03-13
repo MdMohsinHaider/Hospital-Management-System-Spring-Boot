@@ -30,4 +30,6 @@ public interface AppointmentsDao {
 	// Check if an appointment already exists for a patient
 	boolean isPatientBookedDao(Patient patient, LocalDate date);
 	
+	Appointment updateAppointmentDao(int appointmentId, Appointment updatedAppointment); 
+	
 }

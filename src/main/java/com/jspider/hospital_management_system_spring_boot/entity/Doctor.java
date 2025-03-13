@@ -28,6 +28,9 @@ public class Doctor {
 
     @Column(nullable = false, unique = true, length = 15)
     private String contactNumber;
+    
+    @Column(nullable = false, length = 100)
+    private String password;
 
     @Column(nullable = false, length = 50)
     private String specialization;

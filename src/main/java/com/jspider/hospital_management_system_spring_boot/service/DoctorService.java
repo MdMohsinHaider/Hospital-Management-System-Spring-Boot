@@ -65,6 +65,13 @@ public class DoctorService implements DoctorsService {
 	public boolean existsByContactNumber(String contactNumber) {
 		return dao.existsByContactNumberDao(contactNumber);
 	}
+
+	@Override
+	public boolean authenticateDoctor(Long doctorId, String password) {
+		if (doctorId == null) return false;
+		if (password == null) return false;
+		return dao.authenticateDoctorDao(doctorId, password);
+	}
 	
 
 }

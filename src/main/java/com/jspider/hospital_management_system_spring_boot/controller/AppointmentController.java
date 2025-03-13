@@ -4,8 +4,11 @@ import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -16,6 +19,7 @@ import com.jspider.hospital_management_system_spring_boot.service.AppointmentsSe
 
 @RestController
 @RequestMapping("/api/appointment")
+@CrossOrigin(value = "http://localhost:5173")
 public class AppointmentController {
 
 	@Autowired
@@ -38,12 +42,19 @@ public class AppointmentController {
 		return service.getAllAppointments();
 	}
 	
-	
 	// Get appointments by date
-    @GetMapping("/date")
+    @GetMapping(value = "/date")
     public List<Appointment> getAppointmentsByDate(@RequestParam String date) {
     	return service.getAppointmentsByDate(LocalDate.parse(date));
     }
+    
+    
+ // Update an existing appointment
+    @PutMapping("/{appointmentId}")
+    public Appointment updateAppointment(@PathVariable int appointmentId, @RequestBody Appointment updatedAppointment) {
+        return service.updateAppointment(appointmentId, updatedAppointment);   		
+    }
+    
     
 	
 	

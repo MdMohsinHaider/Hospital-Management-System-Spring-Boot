@@ -55,4 +55,10 @@ public class DoctorDao implements DoctorsDao {
 		return reposetory.existsByContactNumber(contactNumber);
 	}
 
+	@Override
+	public boolean authenticateDoctorDao(Long doctorId, String password) {
+		Optional<Doctor> doctor = reposetory.findByDoctorIdAndPassword(doctorId, password);
+		return doctor.isPresent();
+	}
+
 }

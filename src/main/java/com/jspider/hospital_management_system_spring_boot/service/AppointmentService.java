@@ -73,6 +73,11 @@ public class AppointmentService implements AppointmentsService {
 	public boolean isPatientBooked(Patient patient, LocalDate date) {
 		return appointmentsDao.isPatientBookedDao(patient, date);
 	}
+
+	@Override
+	public Appointment updateAppointment(int appointmentId, Appointment updatedAppointment) {
+		return appointmentsDao.updateAppointmentDao(appointmentId, updatedAppointment);
+	}
 	
 	
 	

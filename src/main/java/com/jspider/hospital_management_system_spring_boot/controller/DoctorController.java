@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -16,6 +18,7 @@ import com.jspider.hospital_management_system_spring_boot.service.DoctorsService
 
 @RestController
 @RequestMapping(value = "/api/doctor")
+@CrossOrigin(value = "http://localhost:5173")
 public class DoctorController {
 
 	@Autowired
@@ -64,6 +67,13 @@ public class DoctorController {
 		return service.existsByContactNumber(contactNumber);
 	}
 	
+	
+	@PostMapping("/authenticate")
+    public ResponseEntity<Boolean> authenticateDoctor(@RequestParam Long doctorId, @RequestParam String password) {
+        boolean isAuthenticated = service.authenticateDoctor(doctorId, password);
+        return ResponseEntity.ok(isAuthenticated);	
+	}
+		
 	
 	
 	

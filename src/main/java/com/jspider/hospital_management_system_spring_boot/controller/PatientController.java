@@ -11,6 +11,7 @@ import com.jspider.hospital_management_system_spring_boot.service.PatientsServic
 
 @RestController
 @RequestMapping("/api/patient")
+@CrossOrigin(value = "http://localhost:5173")
 public class PatientController {
 
     @Autowired

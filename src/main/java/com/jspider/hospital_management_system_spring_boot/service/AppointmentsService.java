@@ -29,4 +29,7 @@ public interface AppointmentsService {
 		
 	// Check if an appointment already exists for a patient
 	boolean isPatientBooked(Patient patient, LocalDate date);
+	
+	// Update an existing appointment
+	Appointment updateAppointment(int appointmentId, Appointment updatedAppointment);
 }

@@ -15,5 +15,6 @@ public interface DoctorsDao {
 	List<Doctor> findBySpecializationDao(String specialization);
 	boolean existsByEmailDao(String email);
 	boolean existsByContactNumberDao(String contactNumber);
+	boolean authenticateDoctorDao(Long doctorId, String password);
 
 }
