@@ -98,34 +98,6 @@ The project is built using **Maven**. Below is the `pom.xml` configuration:
             <scope>test</scope>
         </dependency>
     </dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <annotationProcessorPaths>
-                        <path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </path>
-                    </annotationProcessorPaths>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <configuration>
-                    <excludes>
-                        <exclude>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok</artifactId>
-                        </exclude>
-                    </excludes>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
 </project>
 ```
 
@@ -134,13 +106,14 @@ The project is built using **Maven**. Below is the `pom.xml` configuration:
 ### **Patient APIs**
 
 | Method | Endpoint | Description |
-|--------|----------------------------------------|--------------------------------------------|
-| POST   | `/api/patient`                        | Save Patient |
-| GET    | `/api/patient`                        | Retrieve All Patients |
-| GET    | `/api/patient/{patientId}`            | Retrieve Patient by ID |
-| GET    | `/api/patient/contact/{contactNumber}`| Retrieve Patient by Contact Number |
-| GET    | `/api/patient/email/{email}`          | Retrieve Patient by Email |
-| POST   | `/api/patient/auth/patientId/1/password/securePassword123` | Authenticate Patient |
+|--------|----------------------------------------------|--------------------------------------------|
+| POST   | `/api/patient`                              | Save Patient |
+| GET    | `/api/patient`                              | Retrieve All Patients |
+| GET    | `/api/patient/{patientId}`                  | Retrieve Patient by ID |
+| GET    | `/api/patient/contact/{contactNumber}`      | Retrieve Patient by Contact Number |
+| GET    | `/api/patient/email/{email}`                | Retrieve Patient by Email |
+| POST   | `/api/patient/auth?patientId=1&password=SecurePass123` | Authenticate Patient |
+| POST   | `/api/patient/exists/{email}`               | Check if Patient exists by Email |
 
 ### **Admin APIs**
 
@@ -148,7 +121,69 @@ The project is built using **Maven**. Below is the `pom.xml` configuration:
 |--------|-----------------------------------------------------|----------------------|
 | POST   | `/api/authenticateAdmin/identifier/admin@gmail.com/password/admin123` | Authenticate Admin |
 
+### **Doctor APIs**
+
+| Method | Endpoint | Description |
+|--------|------------------------------------------------|----------------------|
+| POST   | `/api/doctor`                                  | Save Doctor |
+| GET    | `/api/doctor`                                  | Retrieve All Doctors |
+| GET    | `/api/doctor/contactNumber/{contactNumber}`    | Retrieve Doctor by Contact Number |
+| GET    | `/api/doctor/id/{id}`                          | Retrieve Doctor by ID |
+| GET    | `/api/doctor/email/{email}`                    | Retrieve Doctor by Email |
+| GET    | `/api/doctor/specialization/{specialization}`  | Retrieve Doctor by Specialization |
+| POST   | `/api/doctor/existsByEmail/{email}`            | Check if Doctor exists by Email |
+| POST   | `/api/doctor/existsByContactNumber/{contactNumber}` | Check if Doctor exists by Contact Number |
+
+### **Appointment APIs**
+
+| Method | Endpoint | Description |
+|--------|------------------------------------------------|----------------------|
+| POST   | `/api/appointment`                             | Save Appointment |
+| GET    | `/api/appointment`                             | Retrieve All Appointments |
+| GET    | `/api/appointment/date/{date}`                 | Retrieve Appointments by Date |
+| PUT    | `/api/appointment/{appointmentId}`             | Update an Appointment |
+
+### **Doctor Note APIs**
+
+| Method | Endpoint | Description |
+|--------|------------------------------------------------|----------------------|
+| POST   | `/api/doctor-notes`                            | Save Doctor Note |
+| GET    | `/api/doctor-notes/patient/{patientId}`       | Retrieve Doctor Notes by Patient |
+
+## Example Data for API Testing
+
+### **Sample Patient JSON**
+```json
+{
+  "contactNumber": "8084527631",
+  "email": "mohsinhaider@mohsin.com",
+  "password": "authaCode123",
+  "firstName": "Md Mohsin",
+  "lastName": "Haider",
+  "dateOfBirth": "2001-10-29",
+  "gender": "MALE",
+  "address": "100 White house Main Street, New York",
+  "emergencyContact": "1111111112",
+  "bloodType": "B+",
+  "appointments": []
+}
+```
+
+### **Sample Doctor JSON**
+```json
+{
+  "name": "Dr. Smith",
+  "email": "dr.smith@example.com",
+  "contactNumber": "9876543670",
+  "specialization": "Cardiologist",
+  "experienceYears": 3,
+  "clinicAddress": "123 Heart Care Center, New York, NY",
+  "availableDays": "Monday, Wednesday, Friday",
+  "consultationFee": 300.0
+}
+```
+
 ---
 
-**Developed by:** 
+**Developed by:** Md Mohsin Haider
 
