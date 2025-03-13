@@ -61,4 +61,9 @@ public class DoctorDao implements DoctorsDao {
 		return doctor.isPresent();
 	}
 
+	@Override
+	public void deleteDoctorById(long id) {
+		reposetory.deleteById(id);
+	}
+
 }

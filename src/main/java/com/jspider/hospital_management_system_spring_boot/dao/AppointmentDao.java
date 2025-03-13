@@ -11,8 +11,6 @@ import com.jspider.hospital_management_system_spring_boot.entity.Appointment;
 import com.jspider.hospital_management_system_spring_boot.entity.Doctor;
 import com.jspider.hospital_management_system_spring_boot.entity.Patient;
 import com.jspider.hospital_management_system_spring_boot.reposetory.AppointmentRepository;
-import com.jspider.hospital_management_system_spring_boot.reposetory.DoctorReposetory;
-import com.jspider.hospital_management_system_spring_boot.reposetory.PatientRepository;
 
 @Repository
 public class AppointmentDao implements AppointmentsDao {

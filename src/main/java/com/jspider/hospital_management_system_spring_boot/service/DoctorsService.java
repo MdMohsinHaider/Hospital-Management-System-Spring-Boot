@@ -16,5 +16,6 @@ public interface DoctorsService {
 	boolean existsByEmail(String email);
 	boolean existsByContactNumber(String contactNumber);
 	boolean authenticateDoctor(Long doctorId, String password);
+	boolean deleteDrById(long id);
 
 }

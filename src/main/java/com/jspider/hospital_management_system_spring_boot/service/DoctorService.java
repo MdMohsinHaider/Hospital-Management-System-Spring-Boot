@@ -17,9 +17,6 @@ public class DoctorService implements DoctorsService {
 
 	@Override
 	public Doctor saveDoctor(Doctor doctor) {
-		if (dao.existsByEmailDao(doctor.getEmail()) || dao.existsByContactNumberDao(doctor.getContactNumber())) {
-			return null;
-		}
 		return dao.saveDoctorDao(doctor);
 	}
 
@@ -72,6 +69,17 @@ public class DoctorService implements DoctorsService {
 		if (password == null) return false;
 		return dao.authenticateDoctorDao(doctorId, password);
 	}
+
+	@Override
+	public boolean deleteDrById(long id) {
+		if (id!=0) {
+			dao.deleteDoctorById(id);
+			return true;
+		}
+		return false;
+	}
+	
+	
 	
 
 }

@@ -16,5 +16,6 @@ public interface DoctorsDao {
 	boolean existsByEmailDao(String email);
 	boolean existsByContactNumberDao(String contactNumber);
 	boolean authenticateDoctorDao(Long doctorId, String password);
+	void deleteDoctorById(long id);
 
 }
