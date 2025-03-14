@@ -78,6 +78,11 @@ public class AppointmentService implements AppointmentsService {
 	public Appointment updateAppointment(int appointmentId, Appointment updatedAppointment) {
 		return appointmentsDao.updateAppointmentDao(appointmentId, updatedAppointment);
 	}
+
+	@Override
+	public List<Appointment> getAppointmentsByPatientId(int patientId) {
+		return appointmentsDao.getAppointmentsByPatientIdDao(patientId);
+	}
 	
 	
 	

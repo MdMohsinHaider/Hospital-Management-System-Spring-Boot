@@ -49,11 +49,18 @@ public class AppointmentController {
     }
     
     
- // Update an existing appointment
+    // Update an existing appointment
     @PutMapping("/{appointmentId}")
     public Appointment updateAppointment(@PathVariable int appointmentId, @RequestBody Appointment updatedAppointment) {
         return service.updateAppointment(appointmentId, updatedAppointment);   		
     }
+    
+    @GetMapping(value = "/patientId/{patientId}")
+    public List<Appointment> getAppointmentsByPatientId(@PathVariable int patientId) {
+    	return service.getAppointmentsByPatientId(patientId);
+    }
+    
+    
     
     
 	

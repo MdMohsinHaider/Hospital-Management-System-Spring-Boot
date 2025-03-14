@@ -32,4 +32,7 @@ public interface AppointmentsService {
 	
 	// Update an existing appointment
 	Appointment updateAppointment(int appointmentId, Appointment updatedAppointment);
+	
+	// get Appointment of patient 
+	List<Appointment> getAppointmentsByPatientId(int patientId);
 }
