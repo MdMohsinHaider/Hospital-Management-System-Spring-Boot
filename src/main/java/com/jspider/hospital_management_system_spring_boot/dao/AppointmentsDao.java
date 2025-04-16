@@ -34,4 +34,6 @@ public interface AppointmentsDao {
 	
 	List<Appointment> getAppointmentsByPatientIdDao(int patientId);
 	
+	List<Appointment> getAppointmentsByDoctorIdDao(int doctorId);
+	
 }

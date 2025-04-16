@@ -28,6 +28,7 @@ public class DoctorNoteController {
         }
     }
     
+    
 
     // Get all notes by patient ID
     @GetMapping("/patient/{patientId}")

@@ -92,6 +92,16 @@ public class AppointmentDao implements AppointmentsDao {
 		Patient patient = optional.get();
 		return repository.findByPatient(patient);
 	}
+
+	@Override
+	public List<Appointment> getAppointmentsByDoctorIdDao(int doctorId) {
+		Optional<Doctor> optional = doctorsDao.getDoctorByIdDao(doctorId);
+		if(!optional.isPresent()) return null;
+		
+		Doctor doctor = optional.get();
+		return repository.findByDoctor(doctor);
+		
+	}
 	
 	
 	

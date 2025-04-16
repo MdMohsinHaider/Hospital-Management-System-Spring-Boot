@@ -60,6 +60,13 @@ public class AppointmentController {
     	return service.getAppointmentsByPatientId(patientId);
     }
     
+    @GetMapping(value = "/doctorId/{doctorId}")
+    public List<Appointment> getAppointmentsByDoctorId(@PathVariable int doctorId) {
+    	return service.getAppointmentsByDoctorId(doctorId);
+    	
+    }
+    
+    
     
     
     

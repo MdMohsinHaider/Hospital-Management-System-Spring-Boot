@@ -3,7 +3,7 @@ package com.jspider.hospital_management_system_spring_boot.service;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-
+//import com.jspider.hospital_management_system_spring_boot.reposetory.AppointmentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +16,8 @@ import com.jspider.hospital_management_system_spring_boot.entity.Patient;
 
 @Service
 public class AppointmentService implements AppointmentsService {
+
+//    private AppointmentRepository appointmentRepository;
 	
 	@Autowired
 	private AppointmentsDao appointmentsDao;
@@ -25,6 +27,10 @@ public class AppointmentService implements AppointmentsService {
 	
 	@Autowired
 	private PatientsDao patientsDao;
+
+//    AppointmentService(AppointmentRepository appointmentRepository) {
+//        this.appointmentRepository = appointmentRepository;
+//    }
 	
 	@Override
 	public Appointment saveAppointment(Appointment appointment) {
@@ -82,6 +88,12 @@ public class AppointmentService implements AppointmentsService {
 	@Override
 	public List<Appointment> getAppointmentsByPatientId(int patientId) {
 		return appointmentsDao.getAppointmentsByPatientIdDao(patientId);
+	}
+
+	@Override
+	public List<Appointment> getAppointmentsByDoctorId(int doctorId) {
+		return appointmentsDao.getAppointmentsByDoctorIdDao(doctorId);
+		
 	}
 	
 	
